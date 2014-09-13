@@ -1,6 +1,6 @@
 #include <runtime.h>
 
-void ·ID(int32 id) {
+void ·GoID(int64 id) {
 	id = g->goid;
 	USED(&id);
 }

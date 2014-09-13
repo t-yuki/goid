@@ -1,7 +1,8 @@
+// Package goid provides runtime info of current goroutine.
 package goid
 
-// ID returns the current goroutine id.
+// GoID returns the current goroutine id.
 // It exactly matches goroutine id of the stack trace.
 // Note that the user should not use this id to implement feature such as goroutine local storage.
 // It is intended to support debug logger or testing.
-func ID() int32
+func GoID() int64

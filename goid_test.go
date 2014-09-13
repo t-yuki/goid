@@ -10,36 +10,36 @@ import (
 	"github.com/t-yuki/goid"
 )
 
-func TestID(t *testing.T) {
-	testID(t)
+func TestGoID(t *testing.T) {
+	testGoID(t)
 
 	var wg sync.WaitGroup
 	for i := 0; i < 5; i++ {
 		wg.Add(1)
 		go func() {
-			testID(t)
+			testGoID(t)
 			wg.Done()
 		}()
 	}
 	wg.Wait()
 }
 
-func testID(t *testing.T) {
-	n := goid.ID()
+func testGoID(t *testing.T) {
+	id := goid.GoID()
 	lines := strings.Split(stackTrace(), "\n")
 	for i, line := range lines {
-		if !strings.HasPrefix(line, fmt.Sprintf("goroutine %d ", n)) {
+		if !strings.HasPrefix(line, fmt.Sprintf("goroutine %d ", id)) {
 			continue
 		}
 		if i+1 == len(lines) {
 			break
 		}
 		if !strings.Contains(lines[i+1], ".stackTrace") {
-			t.Errorf("there are goroutine id %d but it is not me: %s", n, lines[i+1])
+			t.Errorf("there are goroutine id %d but it is not me: %s", id, lines[i+1])
 		}
 		return
 	}
-	t.Errorf("there are no goroutine %d", n)
+	t.Errorf("there are no goroutine %d", id)
 }
 
 func stackTrace() string {
