@@ -2,7 +2,7 @@
 // Run `go generate` before use.
 package goid
 
-//go:generate cp -f $GOROOT/src/runtime/zasm_linux_amd64.h zasm_linux_amd64.h
+//go:generate sh gen.sh $GOROOT
 
 // GoID returns the current goroutine id.
 // It exactly matches goroutine id of the stack trace.

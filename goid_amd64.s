@@ -1,5 +1,8 @@
+#include "go_asm.h"
+#include "go_tls.h"
 #include "textflag.h"
-#include "zasm_GOOS_GOARCH.h"
+
+// see also: https://golang.org/doc/asm
 
 // func GoID() int64
 TEXT ·GoID(SB),NOSPLIT,$0-8
